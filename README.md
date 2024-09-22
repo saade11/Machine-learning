@@ -228,6 +228,24 @@ The ‘k’ in KNN stands for the number of nearest neighbors you want to consid
 
 the hard thing in this approach we must correctly choose "K" and it is always better to choose an odd K for the voting part.
 
+# Gradient Descent vs Stochastic Gradient Descent
+_____
+
+Lets first try to understand why do we need any alternative for Gradient Descent, is it not good enough?
+
+Lets illustrate the problem through an example below:
+
+| Area | Bedrooms | price  |
+| ---- | -------- | ------ |
+| 2600 | 3        | 550000 |
+| 3000 | 4        | 565000 |
+| 3200 | 3        | 610000 |
+| 3600 | 3        | 595000 |
+| 4100 | 6        | 810000 |
+
+If we approach this problem using the standard way, we would have first a hypothesis function $h_\theta (x)$ and then we would compute the error by comparing with the actual prices. So we would compute the error of each row until we reach the last row (this is known as an epoch) **finally** now we adjust the weights ie ($\theta_0$ ,$\theta_1$ and $\theta_2$), $\theta_2$ here is the bias term. So in this example we have 5 rows and 2 features where are (Area and Bedrooms). assume we have initialized $\theta_0$ ,$\theta_1$ and $\theta_2$ to all be 1. We have to calculate here the error for 5 rows but assume we have 20 zillions rows this would not be computationally feasible keeping in mind also we have to evaluate the derivatives  which would require double because we have 2 features. Thus we can see the need for an alternative which is stochastic gradient where we will proceed as follows: we will sample(pick at random a row from the dataset) evaluate $h_\theta (x)$ get the error and directly updating the weight, thus we will evaluate much faster and concerning the convergence we will also converge much faster with no remarkable cost at the most optimal weight.
+
+
 
 
 
